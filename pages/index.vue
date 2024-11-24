@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { useLanguageStore } from '~/stores/stores';
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+import aboutUsImg from '../assets/New/about-us-img.jpg'
+import epVision from '../assets/New/ep-vision.jpg'
+import epGoals from '../assets/New/goals.jpg'
+import epFounder from '../assets/New/founder.jpg'
+import epPersonalBodyguard from '../assets/New/epPersonalBodyguard.jpg'
+import epCelebrity from '../assets/New/epCelebrity.jpg'
+import epChildren from '../assets/New/epChildren.jpg'
 
 const { language } = useLanguageStore()
 //Example of Fetaure object
@@ -31,50 +38,137 @@ const ePGoalList = [{
 }]
 
 const featuresList = [{
-  title: t('Affordable'),
-  description: t('AffordableDescription'),
-  icon: 'i-heroicons-cog'
+  title: t('ProfessionalAndExperiencedStaffTitle'),
+  description: t('ProfessionalAndExperiencedStaffDescription'),
+  icon: 'i-heroicons-user-group'
 },
 {
-  name: t('EPGoalText2'),
-},
-{
-  name: t('EPGoalText3'),
-}
-  ,
-{
-  name: t('EPGoalText4'),
-}
-  ,
-{
-  name: t('EPGoalText5'),
-}
-  ,
-{
-  name: t('EPGoalText6'),
-}]
+  title: t('AdaptabilityTitle'),
+  description: t('AdaptabilityDescription'),
+  icon: 'i-heroicons-adjustments-horizontal'
+  },
+  {
+  title: t('HighQualityServiceTitle'),
+  description: t('HighQualityServiceDescription'),
+    icon: 'i-heroicons-cog'
+  },
+  {
+  title: t('EffectiveRiskManagementTitle'),
+  description: t('EffectiveRiskManagementDescription'),
+  icon: 'i-heroicons-rocket-launch'
+  },
+  {
+  title: t('DiscretionAndIntegrityTitle'),
+  description: t('DiscretionAndIntegrityDescription'),
+  icon: 'i-heroicons-chart-bar'
+  },
+  {
+  title: t('StandardTitle'),
+  description: t('StandardDescription'),
+  icon: 'i-heroicons-shield-check'
+  },
+]
 
-const light = 'https://source.unsplash.com/random/200x200?sky'
-const dark = 'https://source.unsplash.com/random/200x200?stars'
+
+const testimonialItems= [
+  {
+  quote: t('Testimonial1Quote'),
+      author: {
+        name: t('Testimonial1Name'),
+        description: t('Testimonial1Company'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+},
+{
+  quote: t('Testimonial2Quote'),
+      author: {
+        name: t('Testimonial2Company'),
+        description: t('Testimonial2Name'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+},
+{
+  quote: t('Testimonial3Quote'),
+      author: {
+        name: t('Testimonial3Name'),
+        // description: t('Testimonial3Company'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+},
+{
+  quote: t('Testimonial4Quote'),
+      author: {
+        name: t('Testimonial4Name'),
+        // description: t('Testimonial3Company'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+},
+{
+  quote: t('Testimonial5Quote'),
+      author: {
+        name: t('Testimonial5Name'),
+        // description: t('Testimonial3Company'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+},
+{
+  quote: t('Testimonial6Quote'),
+      author: {
+        name: t('Testimonial6Company'),
+        // description: t('Testimonial3Company'),
+        avatar: {    
+          // src: "https://i.pravatar.cc/120?img=1",
+          // loading: "lazy"
+        }
+      }
+}
+]
+
 </script>
 
 <template>
   <div>
-    <ULandingHero class="noto-sans-arabic" :title="t('YourRelaibleProtectorCompany')">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover z-0"
+    >
+      <source src="../assets/security.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <ULandingHero class="noto-sans-arabic ULandingHero" :title="t('YourRelaibleProtectorCompany')">
+
+    
+    <!-- <div class="absolute inset-0 bg-black/40 z-10"></div> -->
       <template #headline>
         <UBadge v-if="language.WhenProtectionMatters" variant="subtle" size="lg"
           class="relative rounded-full font-semibold">
           <!-- <NuxtLink target="_blank" class="focus:outline-none" tabindex="-1">
             <span class="absolute inset-0" aria-hidden="true" />
           </NuxtLink> -->
-
-          {{ t('WhenProtectionMatters') }}
-
+              {{ t('WhenProtectionMatters') }}
           <!-- <UIcon v-if="page.hero.headline.icon" :name="page.hero.headline.icon" class="ml-1 w-4 h-4 pointer-events-none" /> -->
         </UBadge>
       </template>
 
-      <Placeholder />
+      <!-- <Placeholder /> -->
 
       <ULandingLogos :title="page.logos.title" align="center">
         <UIcon v-for="icon in page.logos.icons" :key="icon" :name="icon"
@@ -85,34 +179,40 @@ const dark = 'https://source.unsplash.com/random/200x200?stars'
 
 
     <ULandingHero id="about" :title="t('AboutUs')">
-      <ULandingSection :title="t('FounderName')" :headline="t('Founder')"
-        :description="t('AboutText')" align="left">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+      <ULandingSection :title="t('AboutUs')" :description="t('AboutText')" align="right">
+        <UColorModeImage   class="w-full " :light="aboutUsImg" :dark="aboutUsImg" />
       </ULandingSection>
+      <!-- <ULandingSection
+        :title="t('FounderName')" :headline="t('Founder')" 
+        :description="t('AboutFounder')" align="left">
+        <UColorModeImage class="w-full h-full" :light="epFounder" :dark="epFounder" />
+      </ULandingSection> -->
       <ULandingSection :title="t('EliteProtectorsVision')"
         :description="t('EPVisionText')" align="right">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+        <UColorModeImage class="w-full h-full" :light="epVision" :dark="epVision" />
       </ULandingSection>
       <ULandingSection :title="t('EliteProtectorsGoals')" align="left"
         :features="ePGoalList">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+        <UColorModeImage class="w-full h-full" :light="epGoals" :dark="epGoals" />
       </ULandingSection>
     </ULandingHero>
 
 
-    <ULandingHero id="our-services" :title="t('OurServices')"
+    <ULandingHero
+      id="our-services" :title="t('OurServices')"
       :description="t('ServicesForYourNeeds')">
-      <ULandingSection :title="t('OSTitle1')" :description="t('OSText1')"
+      <ULandingSection
+        :title="t('OSTitle1')" :description="t('OSText1')"
         :headline="t('OSDescription1')" align="left">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+        <UColorModeImage class="w-full h-full" :light="epPersonalBodyguard" :dark="epPersonalBodyguard" />
       </ULandingSection>
       <ULandingSection :title="t('OSTitle2')" :description="t('OSText2')"
-        :headline="t('OSDescription2')" align="right">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+        :headline="t('OSDescription2')" align="center">
+        <UColorModeImage class="w-full h-full" :light="epCelebrity" :dark="epCelebrity" />
       </ULandingSection>
       <ULandingSection :title="t('OSTitle3')" :description="t('OSText3')"
-        :headline="t('OSDescription3')" align="left">
-        <UColorModeImage class="w-full h-full" :light="light" :dark="dark" />
+        :headline="t('OSDescription3')" align="center">
+        <UColorModeImage class="w-full h-full" :light="epChildren" :dark="epChildren" />
       </ULandingSection>
     </ULandingHero>
 
@@ -137,21 +237,28 @@ const dark = 'https://source.unsplash.com/random/200x200?stars'
       </UPricingGrid>
     </ULandingSection> -->
 
-    <ULandingSection :headline="page.testimonials.headline"
-      :title="page.testimonials.title" :description="page.testimonials.description">
+    <ULandingSection :headline="t('Testimonials')"
+      :title="t('TestimonialsTitle')" >
       <UPageColumns id="testimonials"
         class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <div v-for="(  testimonial, index  ) in   page.testimonials.items  " :key="index"
+        <div v-for="(  testimonial, index  ) in   testimonialItems  " :key="index"
           class="break-inside-avoid">
           <ULandingTestimonial v-bind="testimonial" />
         </div>
       </UPageColumns>
+      <ULandingHero id="about" :title="t('Founder')">
+       <ULandingSection
+        :title="t('FounderName')" :headline="t('Founder')" 
+        :description="t('AboutFounder')" align="left">
+        <UColorModeImage class="w-full h-full" :light="epFounder" :dark="epFounder" />
+      </ULandingSection>
+    </ULandingHero>
     </ULandingSection>
 
-    <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
+    <!-- <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
       <ULandingCTA v-bind="page.cta" :card="false" />
-    </ULandingSection>
-
+    </ULandingSection> -->
+    <!-- 
     <ULandingSection id="faq" :title="page.faq.title" :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]">
       <ULandingFAQ multiple :items="page.faq.items" :ui="{
@@ -162,7 +269,7 @@ const dark = 'https://source.unsplash.com/random/200x200?stars'
         }
       }
     }" class="max-w-4xl mx-auto" />
-    </ULandingSection>
+    </ULandingSection> -->
   </div>
 </template>
 
@@ -174,5 +281,10 @@ const dark = 'https://source.unsplash.com/random/200x200?stars'
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
+}
+
+
+.ULandingHero {
+  height: 100vh;
 }
 </style>

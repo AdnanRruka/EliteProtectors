@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useLanguageStore } from '~/stores/stores';
+import EPLogoLight from '../assets/EPLogoDark.png'
+import EPLogoDark from '../assets/EPLogoDark.png'
+
 
 const nuxtApp = useNuxtApp()
 const { t } = useI18n();
@@ -22,36 +25,54 @@ const links = computed(() => [{
   to: '#about',
   icon: 'i-heroicons-academic-cap',
   active: activeHeadings.value.includes('about')
-}, {
-  label: t('FAQ'),
-  to: '#faq',
-  icon: 'i-heroicons-question-mark-circle',
-  active: activeHeadings.value.includes('faq')
-}])
+}
+
+  // , {
+  //   label: t('FAQ'),
+  //   to: '#faq',
+  //   icon: 'i-heroicons-question-mark-circle',
+  //   active: activeHeadings.value.includes('faq')
+  // }
+])
 
 nuxtApp.hooks.hookOnce('page:finish', () => {
   updateHeadings([
     document.querySelector('#features'),
-    // document.querySelector('#pricing'),
     document.querySelector('#testimonials'),
     document.querySelector('#faq'),
     document.querySelector('#about')
 
   ])
 })
+
+const routeToFooter =()=>{
+  const footerElement = document.getElementById("footer");
+  if (footerElement) {
+    footerElement.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
+  }
+}
 </script>
 
 <template>
   <UHeader :links="links">
-    <template #logo>
+    <!-- <template #logo>
       <UBadge label="EliteProtectors" variant="subtle" class="mb-0.5" />
+    </template> -->
+    <template #logo>
+      <!-- <UAvatar
+      size="2xl"
+        :src=EPLogo
+        alt="Avatar"
+     /> -->
+     <UColorModeImage  width="300" height="100"   :light="EPLogoLight" :dark="EPLogoDark" />
+
     </template>
 
     <template #right>
       <LanguageSwitcher />
 
       <UColorModeButton size="sm" />
-      <UButton :label="t('ContactUs')" color="white" variant="ghost"
+      <UButton @click="routeToFooter()" :label="t('ContactUs')" color="white" variant="ghost"
         trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
     </template>
 

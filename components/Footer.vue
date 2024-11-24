@@ -1,36 +1,14 @@
 <script setup lang="ts">
-const links = [{
-  label: 'Resources',
+const { t } = useI18n();
+const links = [ {
+  label: t('Company'),
   children: [{
-    label: 'Help center'
+    label: `${t('PhoneNumber')}: +97-152-631-8803`,
+    
   }, {
-    label: 'Docs'
+    label: `${t('Email')}: kommer snart`
   }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
-  }]
-}, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
-  }]
-}, {
-  label: 'Company',
-  children: [{
-    label: 'About'
-  }, {
-    label: 'Pricing'
-  }, {
-    label: 'Careers'
-  }, {
-    label: 'Blog'
+    label: `${t('Location')}: kommer snart`
   }]
 }]
 
@@ -54,10 +32,10 @@ function onSubmit() {
 </script>
 
 <template>
-  <UFooter>
-    <template #top>
+  <UFooter id="footer">
+    <template #left>
       <UFooterColumns :links="links">
-        <template #right>
+        <!-- <template #right>
           <form @submit.prevent="onSubmit">
             <UFormGroup label="Subscribe to our newsletter" :ui="{ container: 'mt-3' }">
               <UInput v-model="email" type="email" placeholder="Enter your email"
@@ -67,22 +45,17 @@ function onSubmit() {
                   <UButton type="submit" size="xs"
                     :label="loading ? 'Subscribing' : 'Subscribe'" :loading="loading" />
                 </template>
-              </UInput>
-            </UFormGroup>
-          </form>
-        </template>
+</UInput>
+</UFormGroup>
+</form>
+</template> -->
       </UFooterColumns>
     </template>
 
-    <template #left>
+    <template #center>
       <p class="text-gray-500 dark:text-gray-400 text-sm">
         Copyright © {{ new Date().getFullYear() }}. All rights reserved.
       </p>
-    </template>
-
-    <template #right>
-      <UButton to="https://github.com/nuxt-ui-pro/landing" target="_blank"
-        icon="i-simple-icons-github" aria-label="GitHub" color="gray" variant="ghost" />
     </template>
   </UFooter>
 </template>

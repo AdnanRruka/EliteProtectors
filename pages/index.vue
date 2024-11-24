@@ -87,54 +87,30 @@ const testimonialItems= [
       author: {
         name: t('Testimonial2Company'),
         description: t('Testimonial2Name'),
-        avatar: {    
-          // src: "https://i.pravatar.cc/120?img=1",
-          // loading: "lazy"
-        }
       }
 },
 {
   quote: t('Testimonial3Quote'),
       author: {
         name: t('Testimonial3Name'),
-        // description: t('Testimonial3Company'),
-        avatar: {    
-          // src: "https://i.pravatar.cc/120?img=1",
-          // loading: "lazy"
-        }
       }
 },
 {
   quote: t('Testimonial4Quote'),
       author: {
         name: t('Testimonial4Name'),
-        // description: t('Testimonial3Company'),
-        avatar: {    
-          // src: "https://i.pravatar.cc/120?img=1",
-          // loading: "lazy"
-        }
       }
 },
 {
   quote: t('Testimonial5Quote'),
       author: {
         name: t('Testimonial5Name'),
-        // description: t('Testimonial3Company'),
-        avatar: {    
-          // src: "https://i.pravatar.cc/120?img=1",
-          // loading: "lazy"
-        }
       }
 },
 {
   quote: t('Testimonial6Quote'),
       author: {
         name: t('Testimonial6Company'),
-        // description: t('Testimonial3Company'),
-        avatar: {    
-          // src: "https://i.pravatar.cc/120?img=1",
-          // loading: "lazy"
-        }
       }
 }
 ]
@@ -182,11 +158,6 @@ const testimonialItems= [
       <ULandingSection :title="t('AboutUs')" :description="t('AboutText')" align="right">
         <UColorModeImage   class="w-full " :light="aboutUsImg" :dark="aboutUsImg" />
       </ULandingSection>
-      <!-- <ULandingSection
-        :title="t('FounderName')" :headline="t('Founder')" 
-        :description="t('AboutFounder')" align="left">
-        <UColorModeImage class="w-full h-full" :light="epFounder" :dark="epFounder" />
-      </ULandingSection> -->
       <ULandingSection :title="t('EliteProtectorsVision')"
         :description="t('EPVisionText')" align="right">
         <UColorModeImage class="w-full h-full" :light="epVision" :dark="epVision" />
@@ -196,7 +167,6 @@ const testimonialItems= [
         <UColorModeImage class="w-full h-full" :light="epGoals" :dark="epGoals" />
       </ULandingSection>
     </ULandingHero>
-
 
     <ULandingHero
       id="our-services" :title="t('OurServices')"
@@ -227,16 +197,6 @@ const testimonialItems= [
           v-bind="item" />
       </UPageGrid>
     </ULandingSection>
-
-    <!-- <ULandingSection :title="page.pricing.title" :description="page.pricing.description"
-      :headline="page.pricing.headline">
-      <UPricingGrid id="pricing" compact
-        class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <UPricingCard v-for="(plan, index) in page.pricing.plans" :key="index"
-          v-bind="plan" />
-      </UPricingGrid>
-    </ULandingSection> -->
-
     <ULandingSection :headline="t('Testimonials')"
       :title="t('TestimonialsTitle')" >
       <UPageColumns id="testimonials"
@@ -254,22 +214,6 @@ const testimonialItems= [
       </ULandingSection>
     </ULandingHero>
     </ULandingSection>
-
-    <!-- <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
-      <ULandingCTA v-bind="page.cta" :card="false" />
-    </ULandingSection> -->
-    <!-- 
-    <ULandingSection id="faq" :title="page.faq.title" :description="page.faq.description"
-      class="scroll-mt-[var(--header-height)]">
-      <ULandingFAQ multiple :items="page.faq.items" :ui="{
-      button: {
-        label: 'font-semibold',
-        trailingIcon: {
-          base: 'w-6 h-6'
-        }
-      }
-    }" class="max-w-4xl mx-auto" />
-    </ULandingSection> -->
   </div>
 </template>
 

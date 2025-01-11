@@ -13,9 +13,8 @@ export default defineNuxtConfig({
 
   i18n: {
     lazy: true,
-
+    strategy: 'no_prefix',
     langDir: 'locales',
-    strategy: 'prefix_except_default',
     locales: [
       {
         code: 'en-US',

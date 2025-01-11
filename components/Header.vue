@@ -8,13 +8,13 @@
   const links = computed(() => [
     {
       label: t('Services'),
-      to: '#services',
+      to: useRoute().path === '/' ? '#services' : '/#services',
       icon: 'i-heroicons-cube-transparent',
       active: false,
     },
     {
       label: t('Testimonials'),
-      to: '#testimonials',
+      to: useRoute().path === '/' ? '#testimonials' : '/#testimonials',
       icon: 'i-heroicons-academic-cap',
       active: false,
     },
@@ -27,12 +27,14 @@
   ]);
 
   nuxtApp.hooks.hookOnce('page:finish', () => {
-    updateHeadings([
-      document.querySelector('#features'),
+    const headings = [
+      document.querySelector('#services'),
       document.querySelector('#testimonials'),
-      document.querySelector('#faq'),
       document.querySelector('#about'),
-    ]);
+    ];
+    if (headings.every((heading) => heading)) {
+      useScrollspy().updateHeadings(headings);
+    }
   });
 
   const routeToFooter = () => {

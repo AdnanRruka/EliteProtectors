@@ -318,12 +318,9 @@
         }"
         :button="{
           label: t('ReadMore'),
-          // to: {
-          //   name: 'service',
-          //   params: {
-          //     service: '',
-          //   },
-          // },
+          to: {
+            path: '/celebrity-bodyguard-services',
+          },
         }"
         orientation="vertical"
       />
@@ -368,12 +365,9 @@
         }"
         :button="{
           label: t('ReadMore'),
-          // to: {
-          //   name: 'service',
-          //   params: {
-          //     service: 'betongpannor',
-          //   },
-          // },
+          to: {
+            path: '/bodyguard-for-children',
+          },
         }"
         orientation="vertical"
       />

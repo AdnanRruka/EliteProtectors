@@ -47,27 +47,46 @@
       description: t('OSDescription1'),
       img: '/img/epPersonalBodyguard.jpg',
       img2: '/img/pd2.jpg',
-      videoOrImg: '/img/feature-video.mp4',
       serviceImg: '/img/epPersonalBodyguard.jpg',
       serviceWeProvideTitle: t('OSTitle1'),
       serviceWeProvideDescription: t('OSText1'),
       servicesWeProvide: [
-        {
-          name: 'Installera papptak',
-          description:
-            'Professionell läggning av papptak för både bostäder och kommersiella byggnader',
-        },
-        {
-          name: 'Reparera papptak',
-          description:
-            'Åtgärd av läckor och skador på papptak snabbt och effektivt',
-        },
-        {
-          name: 'Underhåll av papptak',
-          description:
-            'Regelbundet underhåll av papptak för att förlänga takets livslängd och säkerställa dess funktionalitet',
-        },
+        // {
+        //   name: 'Installera papptak',
+        //   description:
+        //     'Professionell läggning av papptak för både bostäder och kommersiella byggnader',
+        // },
+        // {
+        //   name: 'Reparera papptak',
+        //   description:
+        //     'Åtgärd av läckor och skador på papptak snabbt och effektivt',
+        // },
+        // {
+        //   name: 'Underhåll av papptak',
+        //   description:
+        //     'Regelbundet underhåll av papptak för att förlänga takets livslängd och säkerställa dess funktionalitet',
+        // },
       ],
+    },
+    {
+      name: t('OSTitle2'),
+      type: 'celebrity-bodyguard-services',
+      description: t('OSDescription2'),
+      img: '/img/c3.jpg',
+      img2: '/img/celebrity.jpg',
+      serviceImg: '/img/epCelebrity.jpg',
+      serviceWeProvideTitle: t('OSTitle2'),
+      serviceWeProvideDescription: t('OSText2'),
+    },
+    {
+      name: t('OSTitle3'),
+      type: 'bodyguard-for-children',
+      description: t('OSDescription3'),
+      img: '/img/family.jpg',
+      img2: '/img/epChildren.jpg',
+      serviceImg: '/img/ep-vision.jpg',
+      serviceWeProvideTitle: t('OSTitle3'),
+      serviceWeProvideDescription: t('OSText3'),
     },
   ]);
 </script>
@@ -76,7 +95,7 @@
   <div v-if="currentService">
     <img
       v-if="currentService"
-      class="absolute inset-0 w-[500px] h-auto left-1 top-5 z-10"
+      class="absolute inset-0 w-[500px] h-auto left-[1%] top-5 z-10"
       src="/img/logo.png"
     />
     <img
@@ -97,7 +116,7 @@
       orientation="vertical"
       :links="[
         {
-          label: 'Kontakta oss för en kostnadsfri offert',
+          label: t('ContactUs'),
           color: 'gray',
           size: 'lg',
           to: '#contact',
@@ -125,26 +144,9 @@
         )
       "
     >
-      <template
-        v-if="
-          currentService.videoOrImg &&
-          currentService.videoOrImg.endsWith('.mp4')
-        "
-      >
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          class="w-full h-full object-cover z-0 rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px]"
-        >
-          <source :src="currentService.videoOrImg" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </template>
-      <template v-else>
+      <template v-if="currentService.img2">
         <img
-          :src="currentService.videoOrImg"
+          :src="currentService.img2"
           class="w-full h-full object-cover z-0 rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px]"
         />
       </template>

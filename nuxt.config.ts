@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 
   i18n: {
     lazy: true,
+
     langDir: 'locales',
     strategy: 'prefix_except_default',
     locales: [
@@ -30,13 +31,6 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: 'en-US',
-    // vueI18n: {
-    //   fallbackLocale: "en-US"
-    // }
-  },
-
-  ui: {
-    icons: ['heroicons', 'simple-icons'],
   },
 
   devtools: {

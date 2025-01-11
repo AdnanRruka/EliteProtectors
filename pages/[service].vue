@@ -36,24 +36,21 @@
   const currentService = computed<Service | undefined>(() => {
     return services.value.find(
       (service) =>
-        service.name.toLowerCase().replace(' ', '') === route.params.service
+        service.type.toLowerCase().replace(' ', '') === route.params.service
     );
   });
-
+  const { t } = useI18n();
   const services = ref([
     {
-      name: 'Papptak',
-      description: 'Högkvalitativt tätskikt för platta och låglutande tak',
-      img: '/img/papptak.png',
-      img2: '/img/papptak2.png',
+      name: t('OSTitle1'),
+      type: 'personal-bodyguard-service',
+      description: t('OSDescription1'),
+      img: '/img/epPersonalBodyguard.jpg',
+      img2: '/img/pd2.jpg',
       videoOrImg: '/img/feature-video.mp4',
-      featureTitle: 'Fördelar med papptak',
-      serviceImg: '/img/papptak3.png',
-      featureDescription:
-        'Letar du efter en pålitlig takläggare för papptak i Skåne, Kronoberg eller Blekinge? Takspecialisten i Syd AB är experter på installation av papptak, reparation av papptak och underhåll av papptak. Vi erbjuder hållbara och kostnadseffektiva lösningar för flacka tak som ger långvarigt skydd mot väder och vind',
-      serviceWeProvideTitle: 'Tjänster vi erbjuder för papptak',
-      serviceWeProvideDescription:
-        'Vi erbjuder våra takläggningstjänster för papptak i Malmö, Lund, Växjö, Älmhult, Ljungby, Blekinge och hela Skåne och Kronoberg. Kontakta oss idag för en kostnadsfri offert!',
+      serviceImg: '/img/epPersonalBodyguard.jpg',
+      serviceWeProvideTitle: t('OSTitle1'),
+      serviceWeProvideDescription: t('OSText1'),
       servicesWeProvide: [
         {
           name: 'Installera papptak',
@@ -71,77 +68,17 @@
             'Regelbundet underhåll av papptak för att förlänga takets livslängd och säkerställa dess funktionalitet',
         },
       ],
-      features: [
-        {
-          icon: 'i-heroicons-shield-check',
-          name: 'Kostnadseffektivt papptak för både små och stora takprojekt',
-          description: 'Tål tuffa väderförhållanden år efter år',
-        },
-        {
-          icon: 'i-heroicons-currency-dollar',
-          name: 'Hållbarhet och lång livslängd om underhålls korrekt',
-          description: 'Bra värde för pengarna med låg totalkostnad',
-        },
-        {
-          icon: 'i-heroicons-clock',
-          name: 'Lång livslängd upp till 30 år',
-          description: 'Håller i decennier med rätt underhåll',
-        },
-        {
-          icon: 'i-heroicons-wrench',
-          name: 'Minimalt underhållsbehov',
-          description: 'Kräver lite skötsel för att behålla sin funktion',
-        },
-        {
-          icon: 'i-heroicons-rocket-launch',
-          name: 'Snabb installation av papptak utan att det påverkar din verksamhet eller hem',
-          description:
-            'Effektiv installation som minimerar störningar i din vardag',
-        },
-      ],
-      questions: [
-        {
-          label: 'Varför ska jag välja papptak?',
-          content:
-            'Papptak är ett kostnadseffektivt, hållbart och väderbeständigt alternativ som passar perfekt för flata tak, samt garage och andra byggnader med liknande takstrukturer. Det ger långvarigt skydd mot väder och vind.',
-        },
-        {
-          label: 'Hur lång livslängd har ett papptak?',
-          content:
-            'Med rätt underhåll kan papptak hålla mellan 20-30 år. Vi hjälper till att förlänga takets livslängd med noggrant utfört arbete och kvalitetsmaterial.',
-        },
-        {
-          label: 'Är papptak lämpliga för mitt hus?',
-          content:
-            'Ja, papptak är idealiska för både nya och gamla hus, flata tak och även garage. Vi anpassar lösningen efter ditt hus, garage eller andra byggnader.',
-        },
-        {
-          label: 'Vad kostar det att lägga ett papptak?',
-          content:
-            'Kostnaden för ett papptak varierar beroende på takets storlek och materialval, men vi erbjuder konkurrensmässiga priser och gratis offerter så att du kan få en tydlig uppfattning om kostnaden.',
-        },
-        {
-          label: 'Behöver jag oroa mig för vädret när ni byter mitt papptak?',
-          content:
-            'Vi planerar arbetet noggrant och ser till att det genomförs under bra väderförhållanden för att säkerställa ett hållbart resultat. Vid behov använder vi skydd för att minimera väderpåverkan under arbetets gång.',
-        },
-        {
-          label: 'Erbjuder ni garantiintyg på det nya papptaket?',
-          content:
-            'Ja, vi erbjuder ett garantiintyg för alla våra papptak. Intyget skrivs ut direkt när vi färdigställer arbetet, och innan vi avslutar genomför vi en noggrann genomgång av hela taket för att säkerställa att allt är korrekt utfört. Detta ger dig trygghet och säkerhet att ditt tak är skyddat under många år framöver.',
-        },
-        {
-          label: 'Hur vet jag om mitt tak behöver bytas?',
-          content:
-            'Tecken på att ditt tak behöver bytas kan vara läckage, sprickor, blåsor eller synlig slitage. Vi gör en grundlig inspektion för att bedöma takets skick och ge dig professionella råd.',
-        },
-      ],
     },
   ]);
 </script>
 
 <template>
   <div v-if="currentService">
+    <img
+      v-if="currentService"
+      class="absolute inset-0 w-[500px] h-auto left-1 top-5 z-10"
+      src="/img/logo.png"
+    />
     <img
       v-if="currentService"
       class="absolute inset-0 w-full h-full object-cover z-0"
@@ -171,7 +108,7 @@
         <img
           v-if="currentService.img2"
           :src="currentService.img2"
-          class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px]"
+          class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px] object-cover"
         />
       </template>
     </ULandingHero>
@@ -224,10 +161,6 @@
         :src="currentService.serviceImg"
         class="w-full h-full object-cover z-0 rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px]"
       />
-    </ULandingSection>
-
-    <ULandingSection title="Frågor och svar	">
-      <ULandingFAQ :items="currentService.questions" multiple />
     </ULandingSection>
   </div>
 </template>

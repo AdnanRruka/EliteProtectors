@@ -3,13 +3,13 @@
   const { data: page } = await useAsyncData('index', () =>
     queryContent('/').findOne()
   );
-  import aboutUsImg from '../assets/New/about-us-img.jpg';
-  import epVision from '../assets/New/ep-vision.jpg';
-  import epGoals from '../assets/New/goals.jpg';
-  import epFounder from '../assets/New/founder.jpg';
-  import epPersonalBodyguard from '../assets/New/epPersonalBodyguard.jpg';
-  import epCelebrity from '../assets/New/epCelebrity.jpg';
-  import epChildren from '../assets/New/epChildren.jpg';
+  import aboutUsImg from '../assets/img/about-us-img.jpg';
+  import epVision from '../assets/img/ep-vision.jpg';
+  import epGoals from '../assets/img/goals.jpg';
+  import epFounder from '../assets/img/founder.jpg';
+  import epPersonalBodyguard from '../assets/img/epPersonalBodyguard.jpg';
+  import epCelebrity from '../assets/img/epCelebrity.jpg';
+  import epChildren from '../assets/img/epChildren.jpg';
 
   const { language } = useLanguageStore();
   //Example of Fetaure object
@@ -124,12 +124,12 @@
       muted
       loop
       playsinline
-      class="absolute inset-0 w-full h-full object-cover z-0"
+      class="inset-0 w-full object-cover z-0 h-[95vh]"
     >
       <source src="../assets/security.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <ULandingHero
+    <!-- <ULandingHero
       class="noto-sans-arabic ULandingHero"
       :title="t('YourRelaibleProtectorCompany')"
     >
@@ -151,10 +151,10 @@
           class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white"
         />
       </ULandingLogos>
-    </ULandingHero>
+    </ULandingHero> -->
 
     <ULandingHero id="about" :title="t('AboutUs')">
-      <ULandingSection
+      <!-- <ULandingSection
         :title="t('AboutUs')"
         :description="t('AboutText')"
         align="right"
@@ -164,8 +164,25 @@
           :light="aboutUsImg"
           :dark="aboutUsImg"
         />
-      </ULandingSection>
-      <ULandingSection
+      </ULandingSection> -->
+
+      <ULandingCard color="lime">
+        <div class="flex gap-4">
+          <div class="flex-1 flex flex-col justify-center">
+            <h2 class="text-3xl font-semibold">
+              {{ t('AboutUs') }}
+            </h2>
+            <p class="mt-4 text-gray-500 dark:text-gray-400">
+              {{ t('AboutText') }}
+            </p>
+          </div>
+          <div class="flex-1">
+            <img :src="aboutUsImg" class="w-full rounded-md" />
+          </div>
+        </div>
+      </ULandingCard>
+
+      <!-- <ULandingSection
         :title="t('EliteProtectorsVision')"
         :description="t('EPVisionText')"
         align="right"
@@ -175,26 +192,46 @@
           :light="epVision"
           :dark="epVision"
         />
-      </ULandingSection>
-      <ULandingSection
-        :title="t('EliteProtectorsGoals')"
-        align="left"
-        :features="ePGoalList"
-      >
-        <UColorModeImage
-          class="w-full h-full"
-          :light="epGoals"
-          :dark="epGoals"
-        />
-      </ULandingSection>
+      </ULandingSection> -->
+
+      <ULandingCard color="rose">
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <img :src="epVision" class="w-full rounded-md" />
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h2 class="text-3xl font-semibold">
+              {{ t('EliteProtectorsVision') }}
+            </h2>
+            <p class="mt-4 text-gray-500 dark:text-gray-400">
+              {{ t('EPVisionText') }}
+            </p>
+          </div>
+        </div>
+      </ULandingCard>
+      <ULandingCard color="blue" :ui="{ body: { base: 'p-0' } }">
+        <ULandingSection
+          class="p-0"
+          :ui="{ body: { base: 'py-0' } }"
+          :title="t('EliteProtectorsGoals')"
+          align="left"
+          :features="ePGoalList"
+        >
+          <UColorModeImage
+            class="w-full h-full"
+            :light="epGoals"
+            :dark="epGoals"
+          />
+        </ULandingSection>
+      </ULandingCard>
     </ULandingHero>
 
     <ULandingHero
-      id="our-services"
+      id="services"
       :title="t('OurServices')"
       :description="t('ServicesForYourNeeds')"
     >
-      <ULandingSection
+      <!-- <ULandingSection
         :title="t('OSTitle1')"
         :description="t('OSText1')"
         :headline="t('OSDescription1')"
@@ -205,8 +242,42 @@
           :light="epPersonalBodyguard"
           :dark="epPersonalBodyguard"
         />
-      </ULandingSection>
-      <ULandingSection
+      </ULandingSection> -->
+      <UPricingCard
+        :title="t('OSTitle1')"
+        style="
+          background: url(/img/epPersonalBodyguard.jpg) no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+        :highlight="false"
+        :ui="{
+          price: {
+            wrapper: 'hidden',
+            container: 'hidden',
+          },
+          body: {
+            base: 'bg-black bg-opacity-40 text-white',
+          },
+          description: 'text-md sm:text-base text-white dark:text-white mt-2 ',
+          title: 'text-green',
+          features: {
+            item: {
+              base: ' text-md flex items-center  min-w-0 text-white',
+              label: ' text-xl text-white dark:text-white',
+            },
+          },
+        }"
+        :button="{
+          label: t('ReadMore'),
+          to: {
+            path: '/personal-bodyguard-service',
+          },
+        }"
+        orientation="vertical"
+      />
+
+      <!-- <ULandingSection
         :title="t('OSTitle2')"
         :description="t('OSText2')"
         :headline="t('OSDescription2')"
@@ -217,8 +288,46 @@
           :light="epCelebrity"
           :dark="epCelebrity"
         />
-      </ULandingSection>
-      <ULandingSection
+      </ULandingSection> -->
+
+      <UPricingCard
+        :title="t('OSTitle2')"
+        :headline="t('OSTitle2')"
+        style="
+          background: url(/img/epCelebrity.jpg) no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+        :highlight="false"
+        :ui="{
+          price: {
+            wrapper: 'hidden',
+            container: 'hidden',
+          },
+          body: {
+            base: 'bg-black bg-opacity-40 text-white',
+          },
+          description: 'text-md sm:text-base text-white dark:text-white mt-2 ',
+          title: 'text-green',
+          features: {
+            item: {
+              base: ' text-md flex items-center  min-w-0 text-white',
+              label: ' text-xl text-white dark:text-white',
+            },
+          },
+        }"
+        :button="{
+          label: t('ReadMore'),
+          // to: {
+          //   name: 'service',
+          //   params: {
+          //     service: '',
+          //   },
+          // },
+        }"
+        orientation="vertical"
+      />
+      <!-- <ULandingSection
         :title="t('OSTitle3')"
         :description="t('OSText3')"
         :headline="t('OSDescription3')"
@@ -229,7 +338,45 @@
           :light="epChildren"
           :dark="epChildren"
         />
-      </ULandingSection>
+      </ULandingSection> -->
+
+      <UPricingCard
+        :title="t('OSTitle3')"
+        :headline="t('OSTitle3')"
+        style="
+          background: url(/img/epChildren.jpg) no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+        :highlight="false"
+        :ui="{
+          price: {
+            wrapper: 'hidden',
+            container: 'hidden',
+          },
+          body: {
+            base: 'bg-black bg-opacity-40 text-white',
+          },
+          description: 'text-md sm:text-base text-white dark:text-white mt-2 ',
+          title: 'text-green',
+          features: {
+            item: {
+              base: ' text-md flex items-center  min-w-0 text-white',
+              label: ' text-xl text-white dark:text-white',
+            },
+          },
+        }"
+        :button="{
+          label: t('ReadMore'),
+          // to: {
+          //   name: 'service',
+          //   params: {
+          //     service: 'betongpannor',
+          //   },
+          // },
+        }"
+        orientation="vertical"
+      />
     </ULandingHero>
 
     <ULandingSection

@@ -4,27 +4,25 @@
 
   const nuxtApp = useNuxtApp();
   const { t } = useI18n();
-  const { activeHeadings, updateHeadings } = useScrollspy();
+  // const { activeHeadings, updateHeadings } = useScrollspy();
   const links = computed(() => [
     {
       label: t('Services'),
-      to: '#features',
+      to: '#services',
       icon: 'i-heroicons-cube-transparent',
-      active:
-        activeHeadings.value.includes('features') &&
-        !activeHeadings.value.includes('about'),
+      active: false,
     },
     {
       label: t('Testimonials'),
       to: '#testimonials',
       icon: 'i-heroicons-academic-cap',
-      active: activeHeadings.value.includes('testimonials'),
+      active: false,
     },
     {
       label: t('AboutUs'),
       to: '#about',
       icon: 'i-heroicons-academic-cap',
-      active: activeHeadings.value.includes('about'),
+      active: false,
     },
   ]);
 

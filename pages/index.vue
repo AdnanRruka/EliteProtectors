@@ -17,7 +17,7 @@
   // description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing.
   //icon: i - heroicons - lock - closed
   const { t } = useI18n();
-  const ePGoalList = [
+  const ePGoalList = computed(() => [
     {
       name: t('EPGoalText1'),
     },
@@ -36,9 +36,9 @@
     {
       name: t('EPGoalText6'),
     },
-  ];
+  ]);
 
-  const featuresList = [
+  const featuresList = computed(() => [
     {
       title: t('ProfessionalAndExperiencedStaffTitle'),
       description: t('ProfessionalAndExperiencedStaffDescription'),
@@ -69,9 +69,9 @@
       description: t('StandardDescription'),
       icon: 'i-heroicons-shield-check',
     },
-  ];
+  ]);
 
-  const testimonialItems = [
+  const testimonialItems = computed(() => [
     {
       quote: t('Testimonial1Quote'),
       author: {
@@ -114,7 +114,7 @@
         name: t('Testimonial6Company'),
       },
     },
-  ];
+  ]);
 </script>
 
 <template>
@@ -147,7 +147,7 @@
       </ULandingSection> -->
 
       <ULandingCard color="lime">
-        <div class="flex gap-4">
+        <div class="flex gap-4 md:flex-row flex-col">
           <div class="flex-1 flex flex-col justify-center">
             <h2 class="text-3xl font-semibold">
               {{ t('AboutUs') }}
@@ -175,7 +175,7 @@
       </ULandingSection> -->
 
       <ULandingCard color="rose">
-        <div class="flex gap-4">
+        <div class="flex gap-4 md:flex-row flex-col">
           <div class="flex-1">
             <img :src="epVision" class="w-full rounded-md" />
           </div>
@@ -189,7 +189,7 @@
           </div>
         </div>
       </ULandingCard>
-      <ULandingCard color="blue" :ui="{ body: { base: 'p-0' } }">
+      <ULandingCard color="blue" class="md:flex-row flex-col">
         <ULandingSection
           class="p-0"
           :ui="{ body: { base: 'py-0' } }"

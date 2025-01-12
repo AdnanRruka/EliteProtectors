@@ -124,34 +124,14 @@
       muted
       loop
       playsinline
-      class="inset-0 w-full object-cover z-0 h-[95vh]"
+      class="absolute inset-0 w-full h-full object-cover z-0"
     >
       <source src="../assets/security.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <!-- <ULandingHero
-      class="noto-sans-arabic ULandingHero"
-      :title="t('YourRelaibleProtectorCompany')"
-    >
-      <template #headline>
-        <UBadge
-          v-if="language.WhenProtectionMatters"
-          variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
-        >
-          {{ t('WhenProtectionMatters') }}
-        </UBadge>
-      </template>
-      <ULandingLogos :title="page.logos.title" align="center">
-        <UIcon
-          v-for="icon in page.logos.icons"
-          :key="icon"
-          :name="icon"
-          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white"
-        />
-      </ULandingLogos>
-    </ULandingHero> -->
+    <ULandingHero class="noto-sans-arabic ULandingHero">
+      <template #headline> </template>
+    </ULandingHero>
 
     <ULandingHero id="about" :title="t('AboutUs')">
       <!-- <ULandingSection

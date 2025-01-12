@@ -93,11 +93,11 @@
 
 <template>
   <div v-if="currentService">
-    <img
+    <!-- <img
       v-if="currentService"
-      class="absolute inset-0 w-[500px] h-auto left-[1%] top-5 z-10"
-      src="/img/logo.png"
-    />
+      class="absolute inset-0 w-[500px] h-auto left-[1%] top-5 z-10 hidden lg:block"
+      src="/img/logo.svg"
+    /> -->
     <img
       v-if="currentService"
       class="absolute inset-0 w-full h-full object-cover z-0"
@@ -133,27 +133,7 @@
     </ULandingHero>
 
     <ULandingSection
-      v-if="currentService.features"
-      class="mt-[20%]"
-      :title="currentService.featureTitle"
-      :description="currentService.featureDescription"
-      align="left"
-      :features="
-        currentService.features?.map((feature) =>
-          typeof feature === 'string' ? { name: feature } : feature
-        )
-      "
-    >
-      <template v-if="currentService.img2">
-        <img
-          :src="currentService.img2"
-          class="w-full h-full object-cover z-0 rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700 max-h-[700px]"
-        />
-      </template>
-    </ULandingSection>
-
-    <ULandingSection
-      class="mt-[20%]"
+      class="mt-[40%] xs:mt-[70%] SM:mt-[80%]"
       :title="currentService.serviceWeProvideTitle"
       :description="currentService.serviceWeProvideDescription"
       align="right"

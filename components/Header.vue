@@ -9,19 +9,16 @@
     {
       label: t('Services'),
       to: useRoute().path === '/' ? '#services' : '/#services',
-      icon: 'i-heroicons-cube-transparent',
       active: false,
     },
     {
       label: t('Testimonials'),
       to: useRoute().path === '/' ? '#testimonials' : '/#testimonials',
-      icon: 'i-heroicons-academic-cap',
       active: false,
     },
     {
       label: t('AboutUs'),
       to: '#about',
-      icon: 'i-heroicons-academic-cap',
       active: false,
     },
   ]);
@@ -49,14 +46,13 @@
   <UHeader :links="links">
     <template #logo>
       <UColorModeImage
-        width="400"
+        width="100"
         height="100"
         :light="EPLogoLight"
         :dark="EPLogoDark"
       />
     </template>
     <template #right>
-      <LanguageSwitcher />
       <UColorModeButton size="sm" />
       <UButton
         @click="routeToFooter()"
@@ -66,6 +62,7 @@
         trailing-icon="i-heroicons-arrow-right-20-solid"
         class="hidden lg:flex"
       />
+      <LanguageSwitcher class="hidden lg:block" />
     </template>
 
     <template #panel>
@@ -78,6 +75,8 @@
         class="mb-3"
         to="#contact"
       />
+
+      <LanguageSwitcher />
     </template>
   </UHeader>
 </template>

@@ -1,21 +1,8 @@
 <script setup lang="ts">
-  import { useLanguageStore } from '~/stores/stores';
-  const { data: page } = await useAsyncData('index', () =>
-    queryContent('/').findOne()
-  );
   import aboutUsImg from '../assets/img/about-us-img.jpg';
   import epVision from '../assets/img/ep-vision.jpg';
   import epGoals from '../assets/img/goals.jpg';
-  import epFounder from '../assets/img/founder.jpg';
-  import epPersonalBodyguard from '../assets/img/epPersonalBodyguard.jpg';
-  import epCelebrity from '../assets/img/epCelebrity.jpg';
-  import epChildren from '../assets/img/epChildren.jpg';
 
-  const { language } = useLanguageStore();
-  //Example of Fetaure object
-  // name: Secure
-  // description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing.
-  //icon: i - heroicons - lock - closed
   const { t } = useI18n();
   const ePGoalList = computed(() => [
     {

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-  import EPLogoLight from '../assets/logo.png';
-  import EPLogoDark from '../assets/logo.png';
+  import EPLogoLight from '../assets/logo1.svg';
+  import EPLogoDark from '../assets/logo1.svg';
 
   const nuxtApp = useNuxtApp();
   const { t } = useI18n();
-  // const { activeHeadings, updateHeadings } = useScrollspy();
   const links = computed(() => [
     {
       label: t('Services'),
@@ -18,7 +17,7 @@
     },
     {
       label: t('AboutUs'),
-      to: '#about',
+      to: useRoute().path === '/' ? '#about' : '/#about',
       active: false,
     },
   ]);
@@ -46,8 +45,8 @@
   <UHeader :links="links">
     <template #logo>
       <UColorModeImage
-        width="100"
-        height="100"
+        width="33rem"
+        height="33rem"
         :light="EPLogoLight"
         :dark="EPLogoDark"
       />

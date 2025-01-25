@@ -1,7 +1,5 @@
 <script setup lang="ts">
-  const { data: page } = await useAsyncData('index', () =>
-    queryContent('/').findOne()
-  );
+  import EPLogo from '@/assets/logo1.svg';
 
   const route = useRoute();
   interface Service {
@@ -33,14 +31,9 @@
       content: string;
     }>;
   }
-  const currentService = computed<Service | undefined>(() => {
-    return services.value.find(
-      (service) =>
-        service.type.toLowerCase().replace(' ', '') === route.params.service
-    );
-  });
   const { t } = useI18n();
-  const services = ref([
+
+  const services = computed(() => [
     {
       name: t('OSTitle1'),
       type: 'personal-bodyguard-service',
@@ -50,23 +43,7 @@
       serviceImg: '/img/epPersonalBodyguard.jpg',
       serviceWeProvideTitle: t('OSTitle1'),
       serviceWeProvideDescription: t('OSText1'),
-      servicesWeProvide: [
-        // {
-        //   name: 'Installera papptak',
-        //   description:
-        //     'Professionell läggning av papptak för både bostäder och kommersiella byggnader',
-        // },
-        // {
-        //   name: 'Reparera papptak',
-        //   description:
-        //     'Åtgärd av läckor och skador på papptak snabbt och effektivt',
-        // },
-        // {
-        //   name: 'Underhåll av papptak',
-        //   description:
-        //     'Regelbundet underhåll av papptak för att förlänga takets livslängd och säkerställa dess funktionalitet',
-        // },
-      ],
+      servicesWeProvide: [],
     },
     {
       name: t('OSTitle2'),
@@ -89,15 +66,22 @@
       serviceWeProvideDescription: t('OSText3'),
     },
   ]);
+
+  const currentService = computed<Service | undefined>(() => {
+    return services.value.find(
+      (service) =>
+        service.type.toLowerCase().replace(' ', '') === route.params.service
+    );
+  });
 </script>
 
 <template>
   <div v-if="currentService">
-    <!-- <img
+    <img
       v-if="currentService"
-      class="absolute inset-0 w-[500px] h-auto left-[1%] top-5 z-10 hidden lg:block"
-      src="/img/logo.svg"
-    /> -->
+      class="absolute inset-0 w-[200px] h-[100px] top-[10%] left-[1%] z-10 hidden lg:block"
+      :src="EPLogo"
+    />
     <img
       v-if="currentService"
       class="absolute inset-0 w-full h-full object-cover z-0"
@@ -149,7 +133,7 @@
 
 <style scoped>
   .overlay {
-    height: 93vh;
+    height: 94.5vh;
     color: white !important;
     background-color: rgba(0, 0, 0, 0.5); /* Adjust darkness */
     z-index: 1; /* Place it above the video but below the content */

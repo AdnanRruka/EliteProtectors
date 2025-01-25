@@ -1,7 +1,9 @@
 <template>
   <ULandingSection id="contact" class="bg-gray-50 dark:bg-gray-900">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact Us</h2>
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+        {{ $t('ContactUs') }}
+      </h2>
 
       <div class="flex flex-col items-center mt-8">
         <span class="text-xl font-medium">Mosab Moaiql</span>

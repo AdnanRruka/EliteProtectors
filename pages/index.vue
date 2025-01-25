@@ -2,6 +2,8 @@
   import aboutUsImg from '../assets/img/about-us-img.jpg';
   import epVision from '../assets/img/ep-vision.jpg';
   import epGoals from '../assets/img/goals.jpg';
+  import security from '../assets/security.mp4';
+  import securityMobile from '../assets/security-mobile.mp4';
 
   const { t } = useI18n();
   const ePGoalList = computed(() => [
@@ -102,6 +104,22 @@
       },
     },
   ]);
+
+  const videoSource = computed(() => {
+    if (process.client) {
+      return window.innerWidth < 768 ? securityMobile : security;
+    }
+    return security;
+  });
+
+  if (process.client) {
+    window.addEventListener('resize', () => {
+      const videoElement = document.querySelector('video');
+      if (videoElement) {
+        videoElement.src = window.innerWidth < 768 ? securityMobile : security;
+      }
+    });
+  }
 </script>
 
 <template>
@@ -112,8 +130,8 @@
       loop
       playsinline
       class="absolute inset-0 w-full h-full object-cover z-0"
+      :src="videoSource"
     >
-      <source src="../assets/security.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <ULandingHero class="noto-sans-arabic ULandingHero">

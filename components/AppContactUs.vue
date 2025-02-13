@@ -6,8 +6,8 @@
       </h2>
 
       <div class="flex flex-col items-center mt-8">
-        <span class="text-xl font-medium">Mosab Moaiql</span>
-        <span class="text-sm text-gray-600 dark:text-gray-400 mt-1">CEO</span>
+        <span class="text-xl font-medium">Elite Protectors</span>
+        <!-- <span class="text-sm text-gray-600 dark:text-gray-400 mt-1">CEO</span> -->
         <div
           class="flex items-center gap-x-3 mt-4 hover:transform hover:scale-105 transition-transform"
         >
@@ -24,7 +24,7 @@
             href="mailto:joakim@takspecialistenisyd.com"
             class="text-lg hover:text-primary-500"
           >
-            mosab.moaiql@gmail.com
+            eliteprotectors@outlook.com
           </a>
         </div>
       </div>

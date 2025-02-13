@@ -8,7 +8,7 @@
           label: `${t('PhoneNumber')}: +97-152-631-8803`,
         },
         {
-          label: `${t('Email')}: kommer snart`,
+          label: `${t('Email')}: eliteprotectors@outlook.com`,
         },
         {
           label: `${t('Location')}: kommer snart`,

@@ -21,7 +21,7 @@
         >
           <UIcon name="i-heroicons-envelope" class="w-6 h-6 text-primary-500" />
           <a
-            href="mailto:joakim@takspecialistenisyd.com"
+            href="mailto:eliteprotectors@outlook.com"
             class="text-lg hover:text-primary-500"
           >
             eliteprotectors@outlook.com
